@@ -34,8 +34,6 @@ def start(message):
         answer = start_handler(user_id, user_choice)
     if user_state == 'teacher':
         answer = teacher_handler(user_id, user_choice)
-    if user_state[:5] == 'older':
-        answer = older_handler(user_id, user_choice)
     bot.send_message(message.from_user.id, answer)
 
 

@@ -3,7 +3,7 @@ from config import API_TOKEN
 
 bot = telebot.TeleBot(API_TOKEN)
 controller = {}
-
+adsadasd=10
 INVALID_CHOICE = "Введите, пожалуйста, другой вариант - одно число из списка вариантов выше."
 
 @bot.message_handler(commands=['start'])

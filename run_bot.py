@@ -34,6 +34,10 @@ def start(message):
         answer = start_handler(user_id, user_choice)
     if user_state == 'teacher':
         answer = teacher_handler(user_id, user_choice)
+    if user_state == 'older':
+        answer = older_handler(user_id, user_choice)
+    if user_state == 'older1_1':
+        answer = older_handler(user_id, user_choice)
     bot.send_message(message.from_user.id, answer)
 
 
@@ -41,7 +45,14 @@ def start_handler(user_id, user_choice):
     if user_choice == "1":
         pass
     if user_choice == "2":
-        pass
+        controller[user_id] = 'older'
+        return """
+                Вы открываете глаза. Рядом с вами лежит мобильный телефон. Что вы сделаете?
+                [1] Включите мобильный телефон
+                [2] Встанете с кровати и пойдете умоетесь.
+                """
+    return INVALID_CHOICE
+
     if user_choice == "3":
         pass
     if user_choice == "4":
@@ -75,5 +86,20 @@ def teacher_handler(user_id, user_choice):
         pass
     return INVALID_CHOICE
 
-
+def older_handler(user_id, user_choice):
+    if user_choice == "1":
+        controller[user_id] = 'older1_1'
+        return """
+            Телефон разяжен. Что вы сделаете?
+            [1] Поставите телефон на зарядку и пойдете умоетесь" 
+            [2] Поставите телефон на зарядку и выгляните в окно"
+            """
+    if user_choice == "2":
+        controller[user_id] = 'older1_1'
+        return """
+                Вы пришли в ванную и не узнаете человека стоящего перед вами. Что вы сделаете?
+                [1] Подойдете к телефону" 
+                [2] Подумаете, что вы во сне и выпрыгните из окна"
+                """
+        return INVALID_CHOICE
 bot.polling()
